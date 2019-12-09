@@ -1,0 +1,11 @@
+*.class
+*.jar
+.idea
+*.iml
+*.iws
+*.ipr
+build
+.gitignore
+.gradle
+Thumbs.db
+.DS_Store
