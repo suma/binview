@@ -1,0 +1,24 @@
+plugins {
+    id 'base'
+    id "org.ysb33r.rust.exe" version "0.2"
+}
+
+rust {
+    executable searchPath()
+
+    cargoToml './Cargo.toml'
+    useCargoSourceLayout()
+}
+
+compileExeRust {
+    options {
+        release = true
+    }
+}
+
+task displayLocations {
+    doLast {
+        println "cargo: ${rust.resolveCargoPath()}"
+        println "rustc: ${rust.resolveRustcPath()}"
+    }
+}

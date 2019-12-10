@@ -41,9 +41,17 @@ application {
     applicationName = 'binview'
 }
 
+// for macAppBundle
 macAppBundle {
     mainClassName = 'net.obfuscatism.binview.gui.AppKt'
     bundleIdentifier = "net.obfuscatism.binview"
     bundleJRE = false
+    appName = 'binview'
     javaProperties.put("apple.laf.useScreenMenuBar", "true")
 }
+
+task copyBackendToMacLibrary (type: Copy) {
+    from 'backend/build/rust-project/target/release/backend'
+    into "build/${macAppBundle.appOutputDir}/${macAppBundle.appName}.app/Contents/Library"
+}
+createApp.dependsOn copyBackendToMacLibrary
