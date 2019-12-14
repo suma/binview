@@ -22,3 +22,8 @@ task displayLocations {
         println "rustc: ${rust.resolveRustcPath()}"
     }
 }
+task copyBackendOriginalToml (type: Copy) {
+    from './Cargo.toml'
+    into 'build/cargo-manifests/main/'
+}
+processRustSource.dependsOn copyBackendOriginalToml
