@@ -6,4 +6,9 @@ class TabView : TabPane {
     constructor() : super() {
 
     }
+
+    fun openFile(path: String) {
+        // TODO: process
+        // getBackendPath()
+    }
 }
