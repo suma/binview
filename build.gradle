@@ -44,7 +44,7 @@ application {
 // for macAppBundle
 macAppBundle {
     mainClassName = 'net.obfuscatism.binview.gui.AppKt'
-    bundleIdentifier = "net.obfuscatism.binview"
+    bundleIdentifier = "binview"
     bundleJRE = false
     appName = 'binview'
     javaProperties.put("apple.laf.useScreenMenuBar", "true")
