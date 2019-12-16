@@ -52,6 +52,6 @@ macAppBundle {
 
 task copyBackendToMacLibrary (type: Copy) {
     from 'backend/build/rust-project/target/release/backend'
-    into "build/${macAppBundle.appOutputDir}/${macAppBundle.appName}.app/Contents/Library"
+    into "build/${macAppBundle.appOutputDir}/${macAppBundle.appName}.app/Contents/MacOS"
 }
 createApp.dependsOn copyBackendToMacLibrary
