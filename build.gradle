@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compile 'org.msgpack:msgpack-core:0.8.20'
 
     //compile "org.openjfx:javafx-graphics:13:win"
     //compile "org.openjfx:javafx-graphics:13:linux"
