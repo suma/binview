@@ -51,6 +51,15 @@ class AppMain : Application() {
         tabDummy.content = javafx.scene.control.Label("test")
         tabView.tabs.addAll(tabDummy)
 
+        val tabPane = Tab()
+        val view = ViewPane("/Users/suma/dev/binview/README.md")
+        tabPane.setText("README.md")
+        tabPane.content = view
+        tabView.tabs.addAll(tabPane)
+        tabPane.setOnClosed {
+            view.shutdown()
+        }
+
         return tabView
     }
 }
