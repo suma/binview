@@ -3,7 +3,7 @@ use messagepack_rs::stream::serializer::Serializer;
 use messagepack_rs::value::Value;
 use messagepack_rs::binary::Binary;
 use messagepack_rs_macros::MessagePackFrom;
-use std::io::{self, Read, Write};
+use std::io::{self, Write, BufReader};
 use std::collections::BTreeMap;
 use chrono::prelude::*;
 use std::thread::sleep;
@@ -38,8 +38,11 @@ fn main() {
     let mut out = stdout.lock();
 
     {
-        let input = stdin.lock();
-        let x = input.bytes();
+        let mut reader = mpack::Reader::new(stdin);
+        let res = reader.read_value();
+        if res.is_ok() {
+            let _res = res.unwrap();
+        }
 
         let buf: Vec<u8> = Vec::new();
         let mut stream_serializer = Serializer::new(buf);
