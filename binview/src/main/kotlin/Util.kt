@@ -8,7 +8,6 @@ fun getBackendPath(): String {
     val debug = System.getenv("DEBUG")
     println(debug)
     if (debug != null && !debug.isEmpty()) {
-        println("DEBUG")
         val path = System.getProperty("user.dir")
         val base = File(path).getParent().toString()
         return Paths.get(base, "backend", "build", "rust-project", "target", "release", "backend").toString()

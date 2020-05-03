@@ -44,9 +44,8 @@ application {
 }
 
 task runApp(type: JavaExec) {
-    //classpath = sourceSets.main.runtimeClasspath
-    environment "DEBUG", "true"
-    jvmArgs "DEBUG", "true"
+    //environment "DEBUG", "true"
+    //jvmArgs "-DDDEBUG", "true"
 }
 
 // for macAppBundle
