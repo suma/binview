@@ -1,2 +1,3 @@
-rootProject.name = 'binview'
+rootProject.name = 'binview_app'
+include 'binview'
 include 'backend'

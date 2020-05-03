@@ -1,58 +1,10 @@
-plugins {
-    id 'application'
-    id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.60'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
-    id "edu.sc.seis.macAppBundle" version "2.3.0"
+subprojects {
+    apply plugin: 'java'
+    group 'net.obfuscatism.binview.gui'
+    version = '1.0'
 }
 
-group 'net.obfuscatism.binview.gui'
-version '0.0.1'
-
-sourceCompatibility = 1.12
-
-repositories {
-    mavenCentral()
+project(':binview') {
+    build.dependsOn project(":backend").tasks.build
 }
 
-dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    compile 'org.msgpack:msgpack-core:0.8.20'
-
-    //compile "org.openjfx:javafx-graphics:13:win"
-    //compile "org.openjfx:javafx-graphics:13:linux"
-    //compile "org.openjfx:javafx-graphics:13:mac"
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-javafx {
-    version = "13"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-
-application {
-    mainClassName = 'net.obfuscatism.binview.gui.AppKt'
-    applicationName = 'binview'
-}
-
-// for macAppBundle
-macAppBundle {
-    mainClassName = 'net.obfuscatism.binview.gui.AppKt'
-    bundleIdentifier = "binview"
-    bundleJRE = false
-    appName = 'binview'
-    javaProperties.put("apple.laf.useScreenMenuBar", "true")
-}
-
-task copyBackendToMacLibrary (type: Copy) {
-    from 'backend/build/rust-project/target/release/backend'
-    into "build/${macAppBundle.appOutputDir}/${macAppBundle.appName}.app/Contents/MacOS"
-}
-createApp.dependsOn copyBackendToMacLibrary
